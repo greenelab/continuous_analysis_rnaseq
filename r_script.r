@@ -50,8 +50,8 @@ FinalNames
 # [1] SRR1654626 SRR1654628 SRR1654633 SRR1654636 SRR1654637 SRR1654639 SRR1654641 SRR1654643
 # 9 Levels: output SRR1654626 SRR1654628 SRR1654633 SRR1654636 SRR1654637 ... SRR1654643
 # actual IDs
-ActualNames <- c("mN5",'mN7','mP1','mP4','mP5','mT3','mT5') #,'mT8')
-Groups <- data.frame(Subtypes = c("mN","mN",'mP','mP','mP','mT','mT')) #,'mT'))
+ActualNames <- c("mN5",'mN7','mP1','mP4','mP5','mT3','mT5','mT8')
+Groups <- data.frame(Subtypes = c("mN","mN",'mP','mP','mP','mT','mT','mT'))
  
 Names_count <- data.frame(FinalNames, ActualNames, Groups)
 Names_count

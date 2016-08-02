@@ -16,8 +16,8 @@ build:
     - wget -q $$HOST/rna/SRR1654639_2.fastq.gz
     - wget -q $$HOST/rna/SRR1654641_1.fastq.gz
     - wget -q $$HOST/rna/SRR1654641_2.fastq.gz
-    # - wget -q $$HOST/rna/SRR1654643_1.fastq.gz
-    # - wget -q $$HOST/rna/SRR1654643_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654643_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654643_2.fastq.gz
     
     - mkdir -p kallisto_output
     - kallisto index -i mm10 refMrna.fa.gz
@@ -28,7 +28,7 @@ build:
     - kallisto quant -i mm10  -o kallisto_output/SRR1654637 --bootstrap-samples=10 SRR1654637_1.fastq.gz  SRR1654637_2.fastq.gz -t 28
     - kallisto quant -i mm10  -o kallisto_output/SRR1654639 --bootstrap-samples=10 SRR1654639_1.fastq.gz  SRR1654639_2.fastq.gz -t 28
     - kallisto quant -i mm10  -o kallisto_output/SRR1654641 --bootstrap-samples=10 SRR1654641_1.fastq.gz  SRR1654641_2.fastq.gz -t 28
-    # - kallisto quant -i mm10  -o kallisto_output/SRR1654643 --bootstrap-samples=10 SRR1654643_1.fastq.gz  SRR1654643_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654643 --bootstrap-samples=10 SRR1654643_1.fastq.gz  SRR1654643_2.fastq.gz -t 28
 
     - mkdir -p results
     - Rscript r_script.r    

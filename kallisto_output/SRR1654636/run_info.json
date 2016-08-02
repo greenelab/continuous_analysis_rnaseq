@@ -4,6 +4,6 @@
 	"n_processed": 60697541,
 	"kallisto_version": "0.43.0",
 	"index_version": 10,
-	"start_time": "Tue Aug  2 13:37:38 2016",
+	"start_time": "Tue Aug  2 15:59:36 2016",
 	"call": "kallisto quant -i mm10 -o kallisto_output/SRR1654636 --bootstrap-samples=10 -t 28 SRR1654636_1.fastq.gz SRR1654636_2.fastq.gz"
 }

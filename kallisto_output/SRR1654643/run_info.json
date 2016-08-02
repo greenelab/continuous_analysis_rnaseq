@@ -1,0 +1,9 @@
+{
+	"n_targets": 35026,
+	"n_bootstraps": 10,
+	"n_processed": 73960306,
+	"kallisto_version": "0.43.0",
+	"index_version": 10,
+	"start_time": "Tue Aug  2 16:30:41 2016",
+	"call": "kallisto quant -i mm10 -o kallisto_output/SRR1654643 --bootstrap-samples=10 -t 28 SRR1654643_1.fastq.gz SRR1654643_2.fastq.gz"
+}

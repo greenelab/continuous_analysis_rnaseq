@@ -1,0 +1,49 @@
+build:
+  image: brettbj/continuous_analysis_rna:latest
+  commands:
+    - wget -q $$HOST/rna/refMrna.fa.gz 
+    - wget -q $$HOST/rna/SRR1654626_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654626_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654628_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654628_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654633_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654633_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654636_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654636_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654637_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654637_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654639_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654639_2.fastq.gz
+    - wget -q $$HOST/rna/SRR1654641_1.fastq.gz
+    - wget -q $$HOST/rna/SRR1654641_2.fastq.gz
+    # - wget -q $$HOST/rna/SRR1654643_1.fastq.gz
+    # - wget -q $$HOST/rna/SRR1654643_2.fastq.gz
+    
+    - mkdir -p kallisto_output
+    - kallisto index -i mm10 refMrna.fa.gz
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654626 --bootstrap-samples=10 SRR1654626_1.fastq.gz SRR1654626_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654628 --bootstrap-samples=10 SRR1654628_1.fastq.gz SRR1654628_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654633 --bootstrap-samples=10 SRR1654633_1.fastq.gz SRR1654633_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654636 --bootstrap-samples=10 SRR1654636_1.fastq.gz  SRR1654636_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654637 --bootstrap-samples=10 SRR1654637_1.fastq.gz  SRR1654637_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654639 --bootstrap-samples=10 SRR1654639_1.fastq.gz  SRR1654639_2.fastq.gz -t 28
+    - kallisto quant -i mm10  -o kallisto_output/SRR1654641 --bootstrap-samples=10 SRR1654641_1.fastq.gz  SRR1654641_2.fastq.gz -t 28
+    # - kallisto quant -i mm10  -o kallisto_output/SRR1654643 --bootstrap-samples=10 SRR1654643_1.fastq.gz  SRR1654643_2.fastq.gz -t 28
+
+    - mkdir -p results
+    - Rscript r_script.r    
+
+    - git config user.email "brettbj@gmail.com"
+    - git config user.name "Brett Beaulieu-Jones"
+    - git config --global push.default simple
+    - git remote set-url origin https://github.com/greenelab/continuous_analysis_rnaseq.git
+
+    - git checkout master
+    - git add kallisto_output
+    - git add results
+    - git commit -a -m "Drone Build [skip ci] [ci skip]"
+    - git remote set-url origin https://brettbj:$$git_publish_key@github.com/greenelab/continuous_analysis_rnaseq.git
+    - git push --set-upstream origin master
+
+branches:
+  - staging

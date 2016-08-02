@@ -1,0 +1,8 @@
+id	sample	condition
+1	mN5	mN
+2	mN7	mN
+3	mP1	mP
+4	mP3 mP
+5	mP5	mP
+6	mT3	mT
+7	mT5	mT

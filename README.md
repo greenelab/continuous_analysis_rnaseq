@@ -1,6 +1,6 @@
 # Continuous Analysis RNA-Seq Differential Expression Analysis Example
 
-This is a sample repository showing a [Continuous Analysis Workflow](https://github.com/greenelab/continuous_analysis) for RNA-Seq analysis. Continuous analysis is described in detail and available as a [pre-print](http://biorxiv.org/content/early/2016/06/01/056473).
+This is a sample repository showing a [Continuous Analysis Workflow](https://github.com/greenelab/continuous_analysis) for RNA-Seq analysis. A description of continuous analysis is available as a [pre-print](http://biorxiv.org/content/early/2016/06/01/056473).
 
 In this example we follow the workflow described by [David Balli](https://benchtobioinformatics.wordpress.com/2015/07/10/using-kallisto-for-gene-expression-analysis-of-published-rnaseq-data/) and use data generated from [Boj et al.](http://www.cell.com/cell/abstract/S0092-8674(14)01592-X) (open access). Balli used a similar workflow to the one described by [Andrew Mckenzie](https://andrewtmckenzie.com/2015/05/12/how-to-run-kallisto-on-ncbi-sra-rna-seq-data-for-differential-expression-using-the-mac-terminal/).
 

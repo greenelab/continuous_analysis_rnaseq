@@ -16,11 +16,16 @@ The Continuous Analysis process generates several useful artifacts, two of which
 
 1. Change logs/synchronization between code and figures.
 
-![]()
+![](https://raw.githubusercontent.com/greenelab/continuous_analysis_rnaseq/master/references/pca.png)
+The effect of adding an additional organoid derived from pancreatic adenocarcinoma on principal components analysis using Kallisto’s estimated counts.
 
-2. Complete "audit" logs of the code run: [Logs]()
+![](https://raw.githubusercontent.com/greenelab/continuous_analysis_rnaseq/master/references/volcano.png)
+A volcano plot plotting the p-value vs. the log fold change. Adding an additional organoid derived from pancreatic adenocarcinoma leads to an additional gene being marked as significantly differentially expressed after Benjamini & Hochberg correction.
 
-![]()
+
+2. Complete "audit" logs of the code run: [Logs](https://raw.githubusercontent.com/greenelab/continuous_analysis_rnaseq/master/references/full_logs.txt)
+
+![](https://raw.githubusercontent.com/greenelab/continuous_analysis_rnaseq/master/references/logs.png)
 
 
 

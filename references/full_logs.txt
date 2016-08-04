@@ -1,0 +1,640 @@
+[info] Pulling image plugins/drone-git:latest
+Drone Git Plugin built from 43dcd64
+$ git init
+Initialized empty Git repository in /drone/src/github.com/greenelab/continuous_analysis_rnaseq/.git/
+$ git remote add origin https://github.com/greenelab/continuous_analysis_rnaseq.git
+$ git fetch --no-tags origin +refs/heads/staging:
+From https://github.com/greenelab/continuous_analysis_rnaseq
+ * branch            staging    -> FETCH_HEAD
+ * [new branch]      staging    -> origin/staging
+$ git reset --hard -q 494f61d15f1b18e82ab0aead397db24cc9ee1885
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/refMrna.fa.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654626_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654626_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654628_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654628_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654633_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654633_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654636_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654636_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654637_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654637_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654639_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654639_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654641_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654641_2.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654643_1.fastq.gz
+$ wget -q ftp://ibi-admin-033.med.upenn.edu/rna/SRR1654643_2.fastq.gz
+$ mkdir -p kallisto_output
+$ kallisto index -i mm10 refMrna.fa.gz
+
+[build] loading fasta file refMrna.fa.gz
+[build] k-mer length: 31
+[build] warning: clipped off poly-A tail (longer than 10)
+        from 9710 target sequences
+[build] warning: replaced 24 non-ACGUT characters in the input sequence
+        with pseudorandom nucleotides
+[build] counting k-mers ... done.
+[build] building target de Bruijn graph ...  done 
+[build] creating equivalence classes ...  done
+[build] target de Bruijn graph has 174919 contigs and contains 64110878 k-mers 
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654626 --bootstrap-samples=10 SRR1654626_1.fastq.gz SRR1654626_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654626_1.fastq.gz
+                             SRR1654626_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 45,570,934 reads, 30,009,645 reads pseudoaligned
+[quant] estimated average fragment length: 168.039
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,168 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654628 --bootstrap-samples=10 SRR1654628_1.fastq.gz SRR1654628_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654628_1.fastq.gz
+                             SRR1654628_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 54,088,667 reads, 35,922,079 reads pseudoaligned
+[quant] estimated average fragment length: 175.781
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,351 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654633 --bootstrap-samples=10 SRR1654633_1.fastq.gz SRR1654633_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654633_1.fastq.gz
+                             SRR1654633_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 62,912,167 reads, 39,938,343 reads pseudoaligned
+[quant] estimated average fragment length: 168.12
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,190 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654636 --bootstrap-samples=10 SRR1654636_1.fastq.gz  SRR1654636_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654636_1.fastq.gz
+                             SRR1654636_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 60,697,541 reads, 39,694,868 reads pseudoaligned
+[quant] estimated average fragment length: 154.954
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,098 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654637 --bootstrap-samples=10 SRR1654637_1.fastq.gz  SRR1654637_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654637_1.fastq.gz
+                             SRR1654637_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 65,233,848 reads, 42,782,064 reads pseudoaligned
+[quant] estimated average fragment length: 157.66
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,108 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654639 --bootstrap-samples=10 SRR1654639_1.fastq.gz  SRR1654639_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654639_1.fastq.gz
+                             SRR1654639_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 75,831,982 reads, 48,842,546 reads pseudoaligned
+[quant] estimated average fragment length: 150.127
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,111 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654641 --bootstrap-samples=10 SRR1654641_1.fastq.gz  SRR1654641_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654641_1.fastq.gz
+                             SRR1654641_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 65,347,210 reads, 45,814,784 reads pseudoaligned
+[quant] estimated average fragment length: 156.027
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,128 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ kallisto quant -i mm10  -o kallisto_output/SRR1654643 --bootstrap-samples=10 SRR1654643_1.fastq.gz  SRR1654643_2.fastq.gz -t 28
+
+[quant] fragment length distribution will be estimated from the data
+[index] k-mer length: 31
+[index] number of targets: 35,026
+[index] number of k-mers: 64,110,878
+[index] number of equivalence classes: 81,212
+[quant] running in paired-end mode
+[quant] will process pair 1: SRR1654643_1.fastq.gz
+                             SRR1654643_2.fastq.gz
+[quant] finding pseudoalignments for the reads ... done
+[quant] processed 73,960,306 reads, 51,887,416 reads pseudoaligned
+[quant] estimated average fragment length: 160.683
+[   em] quantifying the abundances ... done
+[   em] the Expectation-Maximization algorithm ran for 1,181 rounds
+[~warn] number of threads (28) greater than number of bootstraps
+[~warn] (cont'd) updating threads to number of bootstraps 10
+[bstrp] number of EM bootstraps complete: 1
+[bstrp] number of EM bootstraps complete: 2
+[bstrp] number of EM bootstraps complete: 3
+[bstrp] number of EM bootstraps complete: 4
+[bstrp] number of EM bootstraps complete: 5
+[bstrp] number of EM bootstraps complete: 6
+[bstrp] number of EM bootstraps complete: 7
+[bstrp] number of EM bootstraps complete: 8
+[bstrp] number of EM bootstraps complete: 9
+[bstrp] number of EM bootstraps complete: 10
+
+$ mkdir -p results
+$ Rscript r_script.r
+[1] "SRR1654626" "SRR1654628" "SRR1654633" "SRR1654636" "SRR1654637"
+[6] "SRR1654639" "SRR1654641" "SRR1654643"
+                                                                             SRR1654626 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654626" 
+                                                                             SRR1654628 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654628" 
+                                                                             SRR1654633 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654633" 
+                                                                             SRR1654636 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654636" 
+                                                                             SRR1654637 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654637" 
+                                                                             SRR1654639 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654639" 
+                                                                             SRR1654641 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654641" 
+                                                                             SRR1654643 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654643" 
+  sample condition
+1    mN5        mN
+2    mN7        mN
+3    mP1        mP
+4    mP3        mP
+5    mP5        mP
+6    mT3        mT
+7    mT5        mT
+8    mT8        mT
+  sample condition
+1    mN5        mN
+2    mN7        mN
+3    mP1        mP
+4    mP3        mP
+5    mP5        mP
+6    mT3        mT
+7    mT5        mT
+8    mT8        mT
+                                                                                   path
+1 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654626
+2 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654628
+3 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654633
+4 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654636
+5 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654637
+6 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654639
+7 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654641
+8 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654643
+Bioconductor version 3.2 (BiocInstaller 1.20.3), ?biocLite for help
+A new version of Bioconductor is available after installing the most recent
+  version of R; see http://bioconductor.org/install
+Loading required package: limma
+Loading required package: methods
+
+Attaching package: 'genefilter'
+
+The following object is masked from 'package:base':
+
+    anyNA
+
+                                                                             SRR1654626 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654626" 
+                                                                             SRR1654628 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654628" 
+                                                                             SRR1654633 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654633" 
+                                                                             SRR1654636 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654636" 
+                                                                             SRR1654637 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654637" 
+                                                                             SRR1654639 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654639" 
+                                                                             SRR1654641 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654641" 
+                                                                             SRR1654643 
+"/drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654643" 
+ [1] /drone/src/github.com/greenelab/continuous
+ [2] analysis_rnaseq/kallisto_output/SRR1654626
+ [3] /drone/src/github.com/greenelab/continuous
+ [4] analysis_rnaseq/kallisto_output/SRR1654628
+ [5] /drone/src/github.com/greenelab/continuous
+ [6] analysis_rnaseq/kallisto_output/SRR1654633
+ [7] /drone/src/github.com/greenelab/continuous
+ [8] analysis_rnaseq/kallisto_output/SRR1654636
+ [9] /drone/src/github.com/greenelab/continuous
+[10] analysis_rnaseq/kallisto_output/SRR1654637
+[11] /drone/src/github.com/greenelab/continuous
+[12] analysis_rnaseq/kallisto_output/SRR1654639
+[13] /drone/src/github.com/greenelab/continuous
+[14] analysis_rnaseq/kallisto_output/SRR1654641
+[15] /drone/src/github.com/greenelab/continuous
+[16] analysis_rnaseq/kallisto_output/SRR1654643
+9 Levels: /drone/src/github.com/greenelab/continuous ...
+                                   FinalNames ActualNames Subtypes
+1  /drone/src/github.com/greenelab/continuous         mN5       mN
+2  analysis_rnaseq/kallisto_output/SRR1654626         mN7       mN
+3  /drone/src/github.com/greenelab/continuous         mP1       mP
+4  analysis_rnaseq/kallisto_output/SRR1654628         mP4       mP
+5  /drone/src/github.com/greenelab/continuous         mP5       mP
+6  analysis_rnaseq/kallisto_output/SRR1654633         mT3       mT
+7  /drone/src/github.com/greenelab/continuous         mT5       mT
+8  analysis_rnaseq/kallisto_output/SRR1654636         mT8       mT
+9  /drone/src/github.com/greenelab/continuous         mN5       mN
+10 analysis_rnaseq/kallisto_output/SRR1654637         mN7       mN
+11 /drone/src/github.com/greenelab/continuous         mP1       mP
+12 analysis_rnaseq/kallisto_output/SRR1654639         mP4       mP
+13 /drone/src/github.com/greenelab/continuous         mP5       mP
+14 analysis_rnaseq/kallisto_output/SRR1654641         mT3       mT
+15 /drone/src/github.com/greenelab/continuous         mT5       mT
+16 analysis_rnaseq/kallisto_output/SRR1654643         mT8       mT
+                  mN5       mN7       mP1      mP4      mP5       mT3       mT5
+NM_001001130  108.657  118.3940  234.8120  175.344  169.448  277.2800  120.9100
+NM_001001144 1458.840 1563.9800 1922.9200 2074.590 1955.750 1546.7800 1777.4600
+NM_001001152   64.000   90.0000  142.0000  137.684  108.233  128.1770   73.1548
+NM_001001160    0.000    0.0000    0.0000    0.000    0.000    0.0000    0.0000
+NM_001001176    0.000   39.1487   78.5445    0.000    0.000   39.5625    0.0000
+NM_001001177    2.000    0.0000    1.0000    0.000    0.000    0.0000    0.0000
+                  mT8
+NM_001001130  216.287
+NM_001001144 2962.330
+NM_001001152  149.884
+NM_001001160    0.000
+NM_001001176  157.569
+NM_001001177    0.000
+  mN mP mT
+1  1  0  0
+2  1  0  0
+3  0  1  0
+4  0  1  0
+5  0  1  0
+6  0  0  1
+7  0  0  1
+8  0  0  1
+attr(,"assign")
+[1] 1 1 1
+attr(,"contrasts")
+attr(,"contrasts")$des
+[1] "contr.treatment"
+
+isexpr
+FALSE  TRUE 
+ 7228 27798 
+[1] 27798     8
+Warning message:
+In data.frame(pcCount$x, Names_count) :
+  row names were found from a short variable and have been discarded
+[1] "#66C2A5" "#FC8D62" "#8DA0CB"
+                  mT.mN       mT.mP       mN.mP     AveExpr         F
+NM_008710    -7.4900342 -0.46334106  7.02669313 -0.07057568 421.12618
+NM_146059    -6.5110115 -0.25868100  6.25233052 -4.88448742 126.95577
+NM_001168516  6.9068855  7.17128107  0.26439553 -3.52850624 109.15839
+NM_001190718 -1.7863131  5.98440998  7.77072306 -2.16400865  96.87629
+NM_001270499  1.6690222 -0.46195408 -2.13097623  5.22629447  85.77833
+NM_001286824  5.6144434  5.92720667  0.31276328 -4.05129875  84.16216
+NM_153163    -5.7974338 -0.25853361  5.53890016 -5.05893392  82.63837
+NM_001111279 -2.3616553 -0.45441315  1.90724213  4.31821938  79.04248
+NM_001130456 -6.0689373 -0.25853361  5.81040366 -4.99882883  77.38560
+NM_178634     5.8535261  0.07934539 -5.77418072 -1.67594884  76.09258
+NM_009342    -1.6718316 -0.29667870  1.37515294  5.56277444  73.95275
+NM_030696     4.9575899  5.27035323  0.31276328 -4.29373552  73.87036
+NM_001177774  7.1871180 -0.02990380 -7.21702180 -0.63553459  73.55970
+NM_001136484 -7.0864077 -0.12433660  6.96207110 -3.80761613  71.56267
+NM_173388    -9.3203864 -8.30878306  1.01160336 -0.12042239  69.57518
+NM_001271857 -5.1394532 -0.25853361  4.88091958 -5.22564961  68.78866
+NM_010598    -5.2029947 -0.25853361  4.94446109 -5.21249947  68.58764
+NM_008092     7.0955731  1.07657613 -6.01899700 -1.11621632  67.99802
+NM_016672    -5.0955476 -0.25853361  4.83701395 -5.23716252  67.85516
+NM_001313976 -0.5712969 -6.23515949 -5.66386259 -4.12998991  66.88188
+NM_001177752 -0.2020878  5.95591749  6.15800526 -2.57719338  65.09600
+NR_045594     5.4772878  5.79005107  0.31276327 -4.09980322  64.92549
+NM_009578    -5.0272456 -0.25853361  4.76871194 -5.25624286  63.32928
+NM_001199244 -5.0092615 -0.25853361  4.75072789 -5.25763400  63.23773
+NM_001013362 -6.8601913  0.50157296  7.36176427 -4.31161185  61.62473
+NM_001278218  0.3604690  7.20604644  6.84557743 -1.93069926  59.26175
+NM_026174     0.9798270  0.03596887 -0.94385811  6.81069840  58.93124
+NM_001163540 -6.7133513 -0.23436029  6.47899098 -4.78387683  57.15645
+NM_001039181 -5.8553704 -0.25853361  5.59683679 -5.05447440  55.05249
+NM_011611    -4.6504257 -0.25853361  4.39189208 -5.34924257  53.25725
+NM_001281862 -5.4036585 -0.25853361  5.14512489 -5.16651509  52.40912
+NM_001291129 -4.8215033 -0.25853361  4.56296971 -5.30286492  52.30660
+NM_001285855 -4.8620388 -4.81945046  0.04258837 -3.58442214  50.91381
+NM_013822    -0.4208883 -1.12828837 -0.70740002  6.48798588  49.83866
+NM_177192     1.2520316  0.47316631 -0.77886531  5.47849522  47.23033
+NM_080453    -0.3827701  6.24012951  6.62289959 -2.36208139  46.86403
+NM_010516    -1.2742250 -0.89593201  0.37829300  6.37826394  46.71247
+NM_001281829 -6.4028773 -6.51061402 -0.10773675 -2.57050571  45.99589
+NM_001311083 -5.0319043 -0.25853361  4.77337070 -5.25920464  45.84551
+NM_021439    -1.0478988  2.28831354  3.33621231  0.66416634  45.75502
+NM_133753    -0.7157280 -0.66147219  0.05425578  7.81104737  45.22813
+NM_001122820  4.7113772 -0.27997201 -4.99134926 -2.39947920  45.04908
+NM_007536    -3.3439208 -0.31497028  3.02895049 -1.20698573  43.50065
+NM_001195421  5.0795593  0.82700326 -4.25255607  7.07465394  42.86202
+NM_181541     1.4554747 -0.07677849 -1.53225319  3.47822791  42.79502
+NM_029633    -7.5775869 -5.92310953  1.65447739 -1.65753360  42.27318
+NM_178621    -0.2424468  4.43466763  4.67711438 -3.51538172  42.01963
+NM_011723    -1.5421219 -0.22573386  1.31638805  4.92196561  41.09903
+NM_007534    -4.5987268  0.92051267  5.51923946 -4.62026088  40.89074
+NM_001270498  1.5361544 -0.53910255 -2.07525698  6.36689651  40.30004
+NM_134069    -5.0212453 -4.31713709  0.70410823 -3.19912287  40.12031
+NM_012048    -0.1225196 -0.95974746 -0.83722790  5.54000774  40.11746
+NM_001113405 -2.0646522 -0.45422988  1.61042231  3.13413605  38.57954
+NM_010439     0.2797116  0.55615641  0.27644482  9.39328577  38.51640
+NM_177574    -4.0934565 -0.25853361  3.83492284 -5.48725503  38.18535
+NM_177628    -2.1073933 -0.26672859  1.84066471  1.65543003  37.87948
+NM_026014     0.2279928  0.89155158  0.66355878  5.18889222  37.75542
+NM_001039059 -4.0494388 -0.25853361  3.79090515 -5.49848864  37.38716
+NM_001316747 -0.8914811  4.19659697  5.08807807 -3.49428124  37.17094
+NM_001270503  4.3836177  0.81366113 -3.56995653  0.08682260  37.07135
+NM_011211    -0.9865150  1.40771576  2.39423077  2.50673928  36.86204
+NM_001161433 -1.0268773 -1.47834535 -0.45146807  4.81419351  36.68323
+NM_133786     0.2957088  0.84979383  0.55408503  7.86488034  36.60389
+NM_007913    -1.8458978 -0.35661807  1.48927972  3.76912372  36.53853
+NM_022032     0.3655713 -0.34408729 -0.70965860  7.68444490  36.46694
+NM_001317354 -4.2108835 -0.25853361  3.95234990 -5.46142135  36.45922
+NM_172881     1.4130628 -0.78932973 -2.20239258  5.24749714  36.40099
+NM_001164528 -1.7773348  0.88526142  2.66259627  2.76796014  36.12473
+                  P.Value    adj.P.Val
+NM_008710    1.189433e-08 0.0003306385
+NM_146059    1.159044e-06 0.0161095520
+NM_001168516 2.046012e-06 0.0175288753
+NM_001190718 3.199356e-06 0.0175288753
+NM_001270499 5.035515e-06 0.0175288753
+NM_001286824 5.404407e-06 0.0175288753
+NM_153163    5.783860e-06 0.0175288753
+NM_001111279 6.821370e-06 0.0175288753
+NM_001130456 7.378019e-06 0.0175288753
+NM_178634    7.852582e-06 0.0175288753
+NM_009342    8.725527e-06 0.0175288753
+NM_030696    8.761518e-06 0.0175288753
+NM_001177774 8.898915e-06 0.0175288753
+NM_001136484 9.850009e-06 0.0175288753
+NM_173388    1.092697e-05 0.0175288753
+NM_001271857 1.139385e-05 0.0175288753
+NM_010598    1.151718e-05 0.0175288753
+NM_008092    1.188874e-05 0.0175288753
+NM_016672    1.198103e-05 0.0175288753
+NM_001313976 1.263432e-05 0.0175604383
+NM_001177752 1.395397e-05 0.0178018967
+NR_045594    1.408885e-05 0.0178018967
+NM_009578    1.543456e-05 0.0179720407
+NM_001199244 1.551655e-05 0.0179720407
+NM_001013362 1.705511e-05 0.0189639232
+NM_001278218 1.967288e-05 0.0206716962
+NM_026174    2.007827e-05 0.0206716962
+NM_001163540 2.244429e-05 0.0222823702
+NM_001039181 2.572257e-05 0.0246564117
+NM_011611    2.900887e-05 0.0268796231
+NM_001281862 3.074487e-05 0.0268975984
+NM_001291129 3.096349e-05 0.0268975984
+NM_001285855 3.413633e-05 0.0287552045
+NM_013822    3.686929e-05 0.0301439018
+NM_177192    4.473791e-05 0.0348390152
+NM_080453    4.600613e-05 0.0348390152
+NM_010516    4.654405e-05 0.0348390152
+NM_001281829 4.919733e-05 0.0348390152
+NM_001311083 4.977807e-05 0.0348390152
+NM_021439    5.013169e-05 0.0348390152
+NM_133753    5.225465e-05 0.0350795782
+NM_001122820 5.300174e-05 0.0350795782
+NM_007536    6.005752e-05 0.0388250920
+NM_001195421 6.330994e-05 0.0393272801
+NM_181541    6.366385e-05 0.0393272801
+NM_029633    6.650732e-05 0.0401867697
+NM_178621    6.794655e-05 0.0401867697
+NM_011723    7.351293e-05 0.0424634434
+NM_007534    7.485102e-05 0.0424634434
+NM_001270498 7.881604e-05 0.0428168519
+NM_134069    8.007461e-05 0.0428168519
+NM_012048    8.009484e-05 0.0428168519
+NM_001113405 9.197225e-05 0.0468268569
+NM_010439    9.250574e-05 0.0468268569
+NM_177574    9.536725e-05 0.0468268569
+NM_177628    9.811080e-05 0.0468268569
+NM_026014    9.925174e-05 0.0468268569
+NM_001039059 1.027385e-04 0.0468268569
+NM_001316747 1.048575e-04 0.0468268569
+NM_001270503 1.058520e-04 0.0468268569
+NM_011211    1.079811e-04 0.0468268569
+NM_001161433 1.098428e-04 0.0468268569
+NM_133786    1.106817e-04 0.0468268569
+NM_007913    1.113789e-04 0.0468268569
+NM_022032    1.121490e-04 0.0468268569
+NM_001317354 1.122324e-04 0.0468268569
+NM_172881    1.128642e-04 0.0468268569
+NM_001164528 1.159235e-04 0.0473888489
+   mT-mN mT-mP mN-mP
+-1    45     3    14
+0  27739 27788 27746
+1     14     7    38
+             logFC    t  P.Value adj.P.Val       B
+NR_004415    11.32 5.56 0.000593     0.110 -0.0344
+NR_004416    11.32 5.56 0.000593     0.110 -0.0344
+NR_027863    11.32 5.56 0.000593     0.110 -0.0344
+NM_172519     8.57 3.37 0.010155     0.227 -2.3864
+NM_001289443  7.89 3.54 0.008026     0.214 -2.1841
+NM_001253770  7.86 5.00 0.001145     0.130 -0.5306
+[1] 27798
+Warning message:
+Removed 4 rows containing missing values (geom_point). 
+             logFC     t  P.Value adj.P.Val      B
+NR_003278    16.51  1.65 1.40e-01  0.610718 -4.830
+NM_001190718  7.77 12.89 1.60e-06  0.013250  3.928
+NM_001013362  7.36 10.04 1.01e-05  0.020405  2.951
+NM_008710     7.03 25.52 8.91e-09  0.000248  8.596
+NM_001164268  6.96  4.60 1.89e-03  0.214461 -0.887
+NM_001136484  6.96 10.54 7.11e-06  0.020405  3.334
+[1] 27798
+Warning message:
+Removed 4 rows containing missing values (geom_point). 
+  sample condition
+1    mN5        mN
+2    mN7        mN
+3    mP1        mP
+4    mP3        mP
+5    mP5        mP
+6    mT3        mT
+7    mT5        mT
+8    mT8        mT
+  sample condition
+1    mN5        mN
+2    mN7        mN
+3    mP1        mP
+4    mP3        mP
+5    mP5        mP
+6    mT3        mT
+7    mT5        mT
+8    mT8        mT
+                                                                                   path
+1 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654626
+2 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654628
+3 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654633
+4 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654636
+5 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654637
+6 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654639
+7 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654641
+8 /drone/src/github.com/greenelab/continuous_analysis_rnaseq/kallisto_output/SRR1654643
+$ git config user.email "brettbj@gmail.com"
+$ git config user.name "Brett Beaulieu-Jones"
+$ git config --global push.default simple
+$ git remote set-url origin https://github.com/greenelab/continuous_analysis_rnaseq.git
+$ git checkout master
+Already on 'master'
+M	kallisto_output/SRR1654626/abundance.h5
+M	kallisto_output/SRR1654626/run_info.json
+M	kallisto_output/SRR1654628/abundance.h5
+M	kallisto_output/SRR1654628/run_info.json
+M	kallisto_output/SRR1654633/abundance.h5
+M	kallisto_output/SRR1654633/run_info.json
+M	kallisto_output/SRR1654636/abundance.h5
+M	kallisto_output/SRR1654636/run_info.json
+M	kallisto_output/SRR1654637/abundance.h5
+M	kallisto_output/SRR1654637/run_info.json
+M	kallisto_output/SRR1654639/abundance.h5
+M	kallisto_output/SRR1654639/run_info.json
+M	kallisto_output/SRR1654641/abundance.h5
+M	kallisto_output/SRR1654641/run_info.json
+M	results/PCA.png
+M	results/res_mNvsmP.png
+M	results/res_mTvsmN.png
+$ git add kallisto_output
+$ git add results
+$ git commit -a -m "Drone Build [skip ci] [ci skip]"
+[master 99877f9] Drone Build [skip ci] [ci skip]
+ 20 files changed, 35043 insertions(+), 7 deletions(-)
+ rewrite kallisto_output/SRR1654637/abundance.h5 (61%)
+ create mode 100644 kallisto_output/SRR1654643/abundance.h5
+ create mode 100644 kallisto_output/SRR1654643/abundance.tsv
+ create mode 100644 kallisto_output/SRR1654643/run_info.json
+ rewrite results/PCA.png (79%)
+ rewrite results/res_mNvsmP.png (88%)
+ rewrite results/res_mTvsmN.png (87%)
+$ git remote set-url origin https://brettbj:a2a55d6a8160d0677ce92630e8e9ee194889ee34@github.com/greenelab/continuous_analysis_rnaseq.git
+$ git push --set-upstream origin master
+To https://brettbj:a2a55d6a8160d0677ce92630e8e9ee194889ee34@github.com/greenelab/continuous_analysis_rnaseq.git
+   e321ad0..99877f9  master -> master
+Branch master set up to track remote branch master from origin.

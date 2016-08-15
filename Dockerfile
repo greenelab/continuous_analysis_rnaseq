@@ -5,13 +5,13 @@ MAINTAINER "Brett Beaulieu-Jones" brettbe@med.upenn.edu
 # Libraries for processing + quantifying RNA-Seq
 RUN cd /docker/
 RUN apt-get install -y wget
-RUN wget --output-document sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/curren$
+RUN wget --output-document sratoolkit.tar.gz http://ftp-trace.ncbi.nlm.nih.gov/sra/sdk/current/sratoolkit.current-ubuntu64.tar.gz
 RUN tar -vxzf sratoolkit.tar.gz
 RUN export PATH=$PATH:$PWD/sratoolkit.2.4.0-1.mac64/bin
 
 # Install helpful R libraries
 RUN echo 'source("http://bioconductor.org/biocLite.R")' > /tmp/packages.R
-RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("rhdf5", "biomaRt", $
+RUN Rscript -e 'source("http://bioconductor.org/biocLite.R"); biocLite(c("rhdf5", "biomaRt", "edgeR", "genefilter", "calibrate"));'
 RUN echo 'install.packages("devtools")' > /tmp/packages.R
 RUN echo 'devtools::install_github("pachterlab/sleuth")' > /tmp/packages.R
 RUN echo 'library("sleuth")' > /tmp/packages.R
@@ -27,4 +27,3 @@ RUN echo 'install.packages("plyr")' > /tmp/packages.R
 RUN echo 'library("plyr")' > /tmp/packages.R
 
 RUN Rscript /tmp/packages.R
-

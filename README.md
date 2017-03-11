@@ -10,6 +10,8 @@ To preform this analysis we use several tools:
 * [Limma](https://www.bioconductor.org/packages/devel/bioc/vignettes/limma/inst/doc/usersguide.pdf)
 * [Sleuth](http://pachterlab.github.io/sleuth/)
 
+A variant of this Continuous Analysis Workflow that performs the same analysis, but which uses [Salmon](https://combine-lab.github.io/salmon) for transcript quantification is available [here](https://github.com/COMBINE-lab/continuous_analysis_rnaseq).  This analysis also demonstrates the use of [Drone v0.5](https://github.com/drone/drone), which eliminates the need to fetch the data into the image on each run.
+
 ## Sample Results
 
 The Continuous Analysis process generates several useful artifacts, two of which are (the full experiment is described below):
